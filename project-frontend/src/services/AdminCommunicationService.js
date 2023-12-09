@@ -36,10 +36,10 @@ const getAllReports = async () => {
 }
 
 
-const updateReport = async (reportId, updatedReport) => {
-  const reportUrl = `http://localhost:8090/reports/${reportId}`;
+const updateReport = async (updatedReport) => {
+  const reportUrl = `http://localhost:8090/update-report`;
 
-  return axios.put(reportUrl, updatedReport)
+  return axios.post(reportUrl, updatedReport)
     .then((response) => response.data)
     .catch((error) => {
       throw error;

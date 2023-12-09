@@ -9,21 +9,31 @@ const Toolbar = () => {
             <Link to="/" style={linkStyle}>
                 Home
             </Link>
+
             <Link to="/register" style={linkStyle}>
                 Register
             </Link>
+
             <Link to="/comm" style={linkStyle}>
                 Communication
             </Link>
             {isLoggedIn ? (
-                <Link to="/logout" style={linkStyle}>
-                    Logout
+                <Link to="/profile" style={linkStyle}>
+                    Profile
                 </Link>
-            ) : (
-                <Link to="/login" style={linkStyle}>
-                    Login
-                </Link>
-            )}
+            ) : (<></>)}
+
+            <div style={{ marginLeft: 'auto' }}>
+                {isLoggedIn ? (
+                    <Link to="/logout" style={linkStyle}>
+                        Logout
+                    </Link>
+                ) : (
+                    <Link to="/login" style={linkStyle}>
+                        Login
+                    </Link>
+                )}
+            </div>
         </div>
     );
 };

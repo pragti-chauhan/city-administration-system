@@ -38,5 +38,14 @@ public class NoticeService implements INoticeService{
 		// TODO Auto-generated method stub
         return noticeRepo.save(notice);
 	}
+	
+	@Override
+	public boolean deleteNotice(Integer id) {
+        if (noticeRepo.existsById(id)) {
+            noticeRepo.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 
 }

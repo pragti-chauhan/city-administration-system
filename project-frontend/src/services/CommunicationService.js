@@ -9,6 +9,10 @@ const getUserReports = (userId) => {
     return axios.get(`${reportUrl}/user/${userId}`);
 };
 
+const getAllReports = () => {
+    return axios.get(reportUrl);
+};
+
 const getAllNotices = () => {
     return axios.get(noticeUrl);
 };
@@ -34,4 +38,4 @@ const deleteReport = (reportId) => {
 //     return axios.post(noticeUrl, adminNotice);
 // };
 
-export { getUserReports, getAllNotices, addReport, editReport, deleteReport };
+export { getUserReports, getAllReports, getAllNotices, addReport, editReport, deleteReport };

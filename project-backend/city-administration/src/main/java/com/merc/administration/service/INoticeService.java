@@ -11,5 +11,7 @@ public interface INoticeService {
 	public abstract Notice noticeById(Integer id);
 
 	public abstract Notice addNotice(Notice notice);
+	
+	public abstract boolean deleteNotice(Integer id);
 
 }

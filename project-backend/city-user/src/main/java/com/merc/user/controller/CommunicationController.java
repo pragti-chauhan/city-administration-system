@@ -28,7 +28,7 @@ public class CommunicationController {
 	@Autowired
 	CommunicationService commService;
 
-//	http://localhost:4200/reports
+//	http://localhost:8090/reports
 
 	@GetMapping(path = "reports", produces = "application/json" )
 	public ResponseEntity<List<AppReport>> getAllReports() {

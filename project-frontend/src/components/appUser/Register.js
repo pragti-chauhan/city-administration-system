@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import AppUser from "../../models/AppUser";
-import { register, getAllUsers } from "../../services/UserServiceP";
+import { register, getAllUsers } from "../../services/UserService";
 
 const Register = () => {
 
@@ -68,10 +68,10 @@ const Register = () => {
 
     const submitRegister = async (evt) => {
         evt.preventDefault();
-    
+
         try {
             const resp = await register(registerData);
-    
+
             if (resp.data.username && resp.status === 201) {
                 alert(`Hi ${resp.data.username}! You've registered successfully. Redirecting you to login page...`);
                 setRegisterData(new AppUser());
@@ -86,7 +86,17 @@ const Register = () => {
             setFailedRegister('An error occurred during registration. Please try again.');
         }
     };
-    
+
+    const isRegisterButtonDisabled =
+        !registerData.username ||
+        !registerData.name ||
+        !registerData.email ||
+        !registerData.pincode ||
+        !registerData.password ||
+        !registerData.confirmPassword ||
+        !!usernameError ||
+        !!emailError ||
+        !!passwordError;
 
     return (
         <div style={styles.container}>
@@ -135,7 +145,16 @@ const Register = () => {
                         required />
                     {passwordError && <span className="error-message">{passwordError}</span>}
 
-                    <input type="submit" name="register" value="Register" style={styles.submitButton}/>
+                    {/* <input type="submit" name="register" value="Register" style={styles.submitButton}/> */}
+                    <hr/>
+                    <input
+                        type="submit"
+                        name="register"
+                        value="Register"
+                        // style={styles.submitButton}
+                        style={{ ...styles.submitButton, ...(isRegisterButtonDisabled ? styles.disabledButton : {}) }}
+                        disabled={isRegisterButtonDisabled}
+                    />
                 </form>
             </div>
             <p style={styles.errorMessage}>{failedRegister}</p>
@@ -189,6 +208,10 @@ const styles = {
         color: 'red',
         textAlign: 'center',
         fontSize: '14px',
+    },
+    disabledButton: {
+        backgroundColor: '#a0a0a0', // Grey color for disabled state
+        cursor: 'not-allowed',
     },
 };
 

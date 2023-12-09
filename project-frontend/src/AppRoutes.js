@@ -12,12 +12,16 @@ import AdminDashboard from './components/appAdmin/AdminDashboard';
 import NoticeDetails from './components/appAdmin/NoticeDetails';
 import ReportsList from './components/appAdmin/ReportsList';
 import ReportDetails from './components/appAdmin/ReportDetails';
-import Register from "./components/appUser/RegisterP";
-import Login from "./components/appUser/LoginP";
-import Logout from "./components/appUser/LogoutP";
+import Register from "./components/appUser/Register";
+import Login from "./components/appUser/Login";
+import Logout from "./components/appUser/Logout";
 import Report from "./components/appUser/Report";
 import UserProfile from "./components/appUser/UserProfile";
+import UpdateProfile from "./components/appUser/UpdateProfile";
 import Communication from "./components/appUser/Communication";
+import UserReport from "./components/appUser/UserReportList";
+import UserNotices from "./components/appUser/UserNotices";
+import SuggestionList from "./components/appUser/SuggestionList";
 
 const AppRoutes = () => {
 
@@ -43,7 +47,11 @@ const AppRoutes = () => {
                     <Route path="*" element={<Page404 />} />
                     <Route path="logout" element={<Logout />} />
                     <Route path="profile" element={<UserProfile />} />
+                    <Route path="update-profile" element={<UpdateProfile />} />
+                    <Route path="user-reports" element={<UserReport />} />
                     <Route path="report" element={<Report />} />
+                    <Route path="user-notices" element={<UserNotices />} />
+                    <Route path="all-suggestions" element={<SuggestionList />} />
                     <Route path="comm" element={<Communication />} />
                 </Routes>
                 <div>
